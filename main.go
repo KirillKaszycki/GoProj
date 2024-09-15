@@ -45,16 +45,16 @@ func main() {
 }
 
 func fibonacci(n int) string {
-	if n == 0 {
-		return "0"
+	sequence := make([]int, n)
+	sequence[0] = 1
+	if n > 1 {
+		sequence[1] = 1
+		for i := 2; i < n; i++ {
+			sequence[i] = sequence[i-1] + sequence[i-2]
+		}
 	}
 
-	sequence := []int{0, 1}
-	for i := 2; i < n; i++ {
-		next := sequence[i-1] + sequence[i-2]
-		sequence = append(sequence, next)
-	}
-
+	// Convert the slice of integers to a string
 	return fmt.Sprint(sequence)
 }
 
